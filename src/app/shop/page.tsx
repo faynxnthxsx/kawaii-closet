@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { productsData } from "@/data/products";
+import { getProducts } from "@/services/productService";
 
 export default function AllProductsPage() {
   return (

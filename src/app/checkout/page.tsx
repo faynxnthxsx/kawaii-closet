@@ -7,6 +7,7 @@ import { useState, useRef, useEffect } from "react";
 import { ChevronDown, MapPin, Truck, CreditCard, Search } from "lucide-react";
 import { provincePostalCodes } from "@/data/provinces";
 import type { CartItem } from "@/store/cartStore";
+  import { createOrder } from "@/services/orderService";
 
 const provincesList = Object.keys(provincePostalCodes).sort();
 
@@ -54,6 +55,13 @@ export default function CheckoutPage() {
       alert("กรุณาเลือกจังหวัด");
       return;
     }
+
+      await createOrder({
+     customer_info: { name: firstName, address: address /* ฯลฯ */ },
+     items: checkoutItems,
+     total_price: total + 50,
+     status: "รับคำสั่งซื้อ"
+  });
     
     const newOrderId = `#SV${Math.floor(Math.random() * 100000)}`;
     setOrderId(newOrderId);

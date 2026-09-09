@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/layout/Footer";
 import Link from "next/link";
-import { productsData } from "@/data/products";
+import { getProducts } from "@/services/productService";
 
 export default function Home() {
   return (
